@@ -62,6 +62,25 @@ class InventoryReportController extends Controller
         $endDateTime = Carbon::parse($end_date)->endOfDay();
 
         // Query laporan persediaan berdasarkan tanggal_masuk
+        // $inventoryReport = Inventory::select(
+        //     'inventories.id',
+        //     'inventories.bahan_id',
+        //     'inventories.satuan',
+        //     'inventories.tanggal_masuk', // Tambahkan tanggal masuk
+        //     'inventories.amount as harga_satuan',
+        //     DB::raw('SUM(inventories.saldo_awal) as saldo_awal'),
+        //     DB::raw('SUM(inventories.quantity) as sisa_stok')
+        // )
+        // ->whereBetween('inventories.tanggal_masuk', [$startDateTime, $endDateTime]) // Menggunakan tanggal_masuk
+        // ->groupBy('inventories.id', 'inventories.bahan_id', 'inventories.satuan', 'inventories.amount')
+        // ->with([
+        //     'bahan',
+        //     'inventoryOut' => function ($query) use ($startDateTime, $endDateTime) {
+        //         $query->whereBetween('created_at', [$startDateTime, $endDateTime])
+        //               ->select('inventory_outs.*', 'inventory_outs.receiver'); // Tambahkan receiver
+        //     }
+        // ])
+        // ->paginate(10);
         $inventoryReport = Inventory::select(
             'inventories.id',
             'inventories.bahan_id',
@@ -72,7 +91,7 @@ class InventoryReportController extends Controller
             DB::raw('SUM(inventories.quantity) as sisa_stok')
         )
         ->whereBetween('inventories.tanggal_masuk', [$startDateTime, $endDateTime]) // Menggunakan tanggal_masuk
-        ->groupBy('inventories.id', 'inventories.bahan_id', 'inventories.satuan', 'inventories.amount')
+        ->groupBy('inventories.id', 'inventories.bahan_id', 'inventories.satuan', 'inventories.amount', 'inventories.tanggal_masuk') // Tambahkan tanggal_masuk
         ->with([
             'bahan',
             'inventoryOut' => function ($query) use ($startDateTime, $endDateTime) {
@@ -81,6 +100,7 @@ class InventoryReportController extends Controller
             }
         ])
         ->paginate(10);
+
 
         return view('pages.inventory_reports.index', compact('inventoryReport', 'start_date', 'end_date'));
     }
