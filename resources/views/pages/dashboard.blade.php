@@ -28,7 +28,7 @@
                         <div class="card-body">
                             <p>Selamat datang di dashboard Pink Manajemen. Silahkan gunakan menu di samping untuk mengakses
                                 fitur-fitur yang tersedia.</p>
-                                <p>Diinformasikan kepada Owner, Website ini menggunakan Layanan Cloud Server yang dibayar per Tahun sebesar Rp.1.000.000,-. Diingatkan untuk membayar kewajiban tersebut setiap tahun sebelum tanggal- 2026, hal ini untuk mengantisipasi data penjualan tidak hilang. Terima Kasih.</p>
+                                <p>Diinformasikan kepada Owner, Website ini menggunakan Layanan Cloud Server yang dibayar per Tahun sebesar Rp.1.000.000,-. Diingatkan untuk membayar kewajiban tersebut setiap tahun sebelum tanggal 19 Februari 2026, hal ini untuk mengantisipasi data penjualan tidak hilang. Terima Kasih.</p>
                         </div>
                     </div>
                 </div>
